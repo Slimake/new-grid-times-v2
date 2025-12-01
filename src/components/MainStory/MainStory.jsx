@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { QUERIES } from '../../constants';
 
 const MainStory = ({
   id,
@@ -18,12 +19,13 @@ const MainStory = ({
       <Abstract>
         <Location>{location}</Location> — {abstract}
       </Abstract>
-      <ReadMore href="/story">Continue Reading…</ReadMore>
+      <ReadMore href="/story">Continue Reading</ReadMore>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.article`
+  --line-clamp: 8;
   color: var(--color-gray-900);
 `;
 
@@ -41,9 +43,21 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--line-clamp);
+  overflow: hidden;
   font-size: 1rem;
   margin-bottom: 1em;
-  white-space: pre-wrap;
+  white-space: pre-line;
+
+  @media (${QUERIES.tabletAndUp}) {
+    -webkit-line-clamp: calc(var(--line-clamp) * 2);
+  }
+
+  @media (${QUERIES.laptopAndUp}) {
+    -webkit-line-clamp: calc(var(--line-clamp));
+  }
 `;
 
 const Location = styled.span`

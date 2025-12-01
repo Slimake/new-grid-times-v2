@@ -6,6 +6,8 @@ import { MARKET_DATA, SPORTS_STORIES } from '../../data';
 import MarketCard from '../MarketCard';
 import SectionTitle from '../SectionTitle';
 import MiniStory from '../MiniStory';
+import { QUERIES } from '../../constants';
+import { COLORS } from '../../constants';
 
 const SpecialtyStoryGrid = () => {
   return (
@@ -47,14 +49,46 @@ const SpecialtyStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   gap: 48px;
+  
+  @media (${QUERIES.laptopAndUp}) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 1px;
+    background-color: ${COLORS.gray[300]};
+  }
 `;
 
-const MarketsSection = styled.section``;
+const MarketsSection = styled.section`
+  @media (${QUERIES.laptopAndUp}) {
+    background-color: ${COLORS.gray[100]};
+    padding-right: 16px;
+  }
+`;
 
-const MarketCards = styled.div``;
+const MarketCards = styled.div`
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(183px, 1fr));
+  gap: 16px;
+`;
 
-const SportsSection = styled.section``;
+const SportsSection = styled.section`
+  display: grid;
 
-const SportsStories = styled.div``;
+  @media (${QUERIES.laptopAndUp}) {
+    background-color: ${COLORS.gray[100]};
+    padding-left: 16px;
+  }
+`;
+
+const SportsStories = styled.div`
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(183px, 1fr));
+  gap: 16px;
+
+  @media (${QUERIES.tabletAndUp}) {
+    display: flex;
+    overflow: auto;
+    padding-bottom: 10px;
+  }
+`;
 
 export default SpecialtyStoryGrid;

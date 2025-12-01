@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { QUERIES } from '../../constants';
+import { COLORS } from '../../constants';
 
 const Advertisement = (props) => {
   return (
@@ -20,6 +21,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 8px;
+
+  @media (${QUERIES.laptopAndUp}) {
+	  border-top: 1px solid ${COLORS.gray[300]};
+    padding-top: 16px;
+  }
 `;
 
 const Prefix = styled.p`

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { COLORS, QUERIES } from '../../constants';
 
 const OpinionStory = ({ id, title, author, avatar }) => {
   return (
@@ -16,7 +17,20 @@ const OpinionStory = ({ id, title, author, avatar }) => {
 };
 
 const Wrapper = styled.article`
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 0 24px;
   color: var(--color-gray-900);
+
+  @media (${QUERIES.tabletOnly}) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (${QUERIES.laptopAndUp}) {
+    gap: 0 16px;
+  }
 `;
 
 const Avatar = styled.img`
@@ -25,6 +39,7 @@ const Avatar = styled.img`
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  margin-top: 4px;
 `;
 
 const AuthorName = styled.p`

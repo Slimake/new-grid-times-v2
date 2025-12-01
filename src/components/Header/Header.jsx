@@ -29,7 +29,19 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
+        <MainActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </MainActionGroup>
         <Logo />
+        <Subscribe>
+          <PaddedButton>SUBSCRIBE</PaddedButton>
+          <a>Already a subscriber?</a>
+        </Subscribe>
       </MainHeader>
     </header>
   );
@@ -39,6 +51,10 @@ const SuperHeader = styled.div`
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  @media (${QUERIES.laptopAndUp}) {
+    display: none;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
@@ -65,6 +81,40 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media (${QUERIES.laptopAndUp}) {
+    & {
+      justify-content: space-between;
+      margin-top: 16px;
+      min-height: calc(98 / 16 * 1rem);
+    }
+  }
+`;
+
+const MainActionGroup = styled(ActionGroup)`
+  display: none;
+
+  @media (${QUERIES.laptopAndUp}) {
+    display: flex;
+    gap: 24px;
+  }
+`;
+
+const Subscribe = styled.div`
+  display: none;
+
+  @media (${QUERIES.laptopAndUp}) {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    gap: 6px;
+    color: black;
+  }
+`;
+
+const PaddedButton = styled(Button)`
+  padding-top: 10px;
+  padding-bottom: 6px;
 `;
 
 export default Header;
